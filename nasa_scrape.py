@@ -43,14 +43,24 @@ def scrape():
     html = requests.get(BASE_URL).text
 
     soup = bs(html, "html.parser")
-    base_two = "https://astrogeology.usgs.gov/" + (soup.find("a", class_="itemLink product-item")['href'])
-    html_two = requests.get(base_two).text
-    soup_two = bs(html_two, "html.parser")
 
-    hemisphere_dict = {
-        "title": soup_two.find("h2", class_="title").text,
-        "img_url": "https://astrogeology.usgs.gov" + (soup_two.find("img", class_="wide-image")['src'])
-    }
+    the_list = soup.find_all("a", class_="itemLink product-item")
+    hemisphere_list = []
+    for item in the_list:
+        hemisphere_list.append("https://astrogeology.usgs.gov" + item["href"])
+
+    hemisphere_dict = []
+    for link in hemisphere_list:
+        new_base = link
+        new_html = requests.get(new_base).text
+        new_soup = bs(new_html, "html.parser")
+        hemisphere_dict.append(
+            {
+                "title": new_soup.find("h2", class_="title").text,
+                "img_url": "https://astrogeology.usgs.gov"
+                + (new_soup.find("img", class_="wide-image")["src"]),
+            }
+        )
 
     # Creates the dictionary with all scrapped values
     scraped_dic = {
@@ -59,11 +69,11 @@ def scrape():
         "image_url": full_image_url,
         "twitter": twitter,
         "dataframe": html_dfs,
-        "hemisphere": hemisphere_dict
+        "hemisphere": hemisphere_dict,
     }
 
     return scraped_dic
 
-scrape_dictionary = scrape()
-pprint(scrape_dictionary)
 
+# scrape_dictionary = scrape()
+# pprint(scrape_dictionary)

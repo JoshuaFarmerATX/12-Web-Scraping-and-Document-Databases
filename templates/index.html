@@ -2,10 +2,11 @@
 {% block content %}
   <div class="container-fluid", style="background: lightgrey">
     <div class="row justify-content-lg-center">
-    <h1>Mission to Mars</h1>
+    <h1><br>Mission to Mars</h1>
     </div>
     <div class="row justify-content-lg-center">
-    <button href="/scrape" role="button">Scrape Data</button>
+      <a href="/scrape"><input type="button" value="Scrape New"></a>
+    <!-- <button href="/scrape", role="button", onclick="alert('Data Refreshed')">Scrape Data</button> -->
     </div>
   </div>
   <div class="container-fluid">
@@ -39,5 +40,30 @@
             </div>
         </div>
     </div>
+  </div>
+  <div class="container-fluid" style="background: lightgrey">
+    <div class="row justify-content-lg-center">
+      <h1><strong><br>Mars Hemispheres</strong></h1>
+    </div>
+    <div class="row">
+      <div class="col-6">
+        <h3>{{ hem_one_title }}</h3>
+        <img src={{ hem_one_img }} class="img-fluid" width="95%">
+      </div>
+      <div class="col-6">
+        <h3>{{ hem_two_title }}</h3>
+        <img src={{ hem_two_img }} class="img-fluid" width="95%">
+      </div>
+      <div class="col-6">
+        <h3>{{ hem_three_title }}</h3>
+        <img src={{ hem_three_img }} class="img-fluid" width="95%">
+      </div>
+      <div class="col-6">
+        <h3>{{ hem_four_title }}</h3>
+        <img src={{ hem_four_img }} class="img-fluid" width="95%">
+      </div>
+    </div>
+  </div>
+
   </div>
 {% endblock %}

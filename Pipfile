@@ -10,12 +10,12 @@ pprint = "*"
 black = "*"
 
 [packages]
-flask = "*"
 selenium = "*"
 requests = "*"
 pandas = "*"
 lxml = "*"
 gunicorn = "*"
+Flask = "*"
 
 [requires]
 python_version = "3.7"

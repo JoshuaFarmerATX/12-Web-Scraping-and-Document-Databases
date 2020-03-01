@@ -5,7 +5,7 @@ verify_ssl = true
 
 [dev-packages]
 pymongo = "*"
-beautifulsoup4 = "4.8.2"
+beautifulsoup4 = "*"
 pprint = "*"
 black = "*"
 

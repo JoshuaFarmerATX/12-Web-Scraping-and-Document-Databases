@@ -15,6 +15,7 @@ selenium = "*"
 requests = "*"
 pandas = "*"
 lxml = "*"
+gunicorn = "*"
 
 [requires]
 python_version = "3.7"

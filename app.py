@@ -9,7 +9,7 @@ app = Flask(__name__)
 
 
 def mongo_query(query_name):
-    client = pymongo.MongoClient("mongodb://heroku_5cvvmm4p:9r8tct8g2btpdrc1bm539aq0ea@ds161335.mlab.com:61335/heroku_5cvvmm4p", 27017)
+    client = pymongo.MongoClient("localhost", 27017)
     db = client["mars"]
     collection = db["mars_data"]
     col_objects = collection.find()
@@ -18,7 +18,7 @@ def mongo_query(query_name):
 
 
 def mongo_hemisphere_query(query_name, index_number):
-    client = pymongo.MongoClient("mongodb://heroku_5cvvmm4p:9r8tct8g2btpdrc1bm539aq0ea@ds161335.mlab.com:61335/heroku_5cvvmm4p", 27017)
+    client = pymongo.MongoClient("localhost", 27017)
     db = client["mars"]
     collection = db["mars_data"]
     col_objects = collection.find()
@@ -28,7 +28,7 @@ def mongo_hemisphere_query(query_name, index_number):
 
 @app.route("/scrape")
 def call_scrape():
-    client = pymongo.MongoClient("mongodb://heroku_5cvvmm4p:9r8tct8g2btpdrc1bm539aq0ea@ds161335.mlab.com:61335/heroku_5cvvmm4p", 27017)
+    client = pymongo.MongoClient("localhost", 27017)
     db = client["mars"]
     collection = db["mars_data"]
     if collection.count() > 0:
@@ -39,7 +39,7 @@ def call_scrape():
 
 @app.route("/")
 def home():
-    client = pymongo.MongoClient("mongodb://heroku_5cvvmm4p:9r8tct8g2btpdrc1bm539aq0ea@ds161335.mlab.com:61335/heroku_5cvvmm4p", 27017)
+    client = pymongo.MongoClient("localhost", 27017)
     headline = mongo_query("article_title")
     content = mongo_query("article_desc")
     featured_image = mongo_query("image_url")

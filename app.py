@@ -54,7 +54,6 @@ def home():
     hem_three_img = mongo_hemisphere_query("img_url", 2)
     hem_four_img = mongo_hemisphere_query("img_url", 3)
 
-
     return render_template(
         "index.html",
         headline=headline,

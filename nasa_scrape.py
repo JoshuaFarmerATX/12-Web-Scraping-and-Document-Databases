@@ -21,7 +21,7 @@ def scrape():
     IMG_HTML = requests.get(IMG_URL).text
 
     img_soup = bs(IMG_HTML, "html.parser")
-    image = img_soup.find("img", class_="thumb")["src"]
+    image = img_soup.find("a", class_="button fancybox")["data-fancybox-href"]
     full_image_url = "https://www.jpl.nasa.gov" + image
 
     # This begins the script for the twitter scrapping
